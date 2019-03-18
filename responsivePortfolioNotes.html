@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Responsive Portfolio Website Notes</title>
+  </head>
+  <body>
+    <p>
+        In this series we will build a fully responsive portfolio website using modern technologies such as...
+      <ul>
+        <li>HTML5</li>
+        <li>CSS3 - Transitions/Grid/Flex</li>
+        <li>Sass</li>
+        <li>NPM Package Manager</li>
+        <li>JavaScript</li>
+        <li>Git</li>
+        <li>Code For This Project:
+          <a href="https://github.com/bradtraversy/modern_portfolio">
+            bradtraversy / modern_portfolio
+          </a>
+        </li>
+      </ul>
+    </p>
+
+    <h2>Responsive Portfolio Website[1] - Setting Up Workflow and Structure</h2>
+    <p>
+      This project uses VS Code with three extensions <br>liveserver by Ritwick Dey and
+      <br>Bracket Pair Colorizer by CoenraadS and
+      <br>
+      Prettier - Code Formatter by Esben Petersen. To have it format automatically, go into settings, select the gear icon in lower left screen, and enter "editor.formatOnSave": true,.
+      In the search bar if you type "editor." the intellisense should bring up the proper setting. Change setting from false to true and hit enter and the code will automatically be added to settings or you can just type it into the settings file. Then save file.
+      <br>
+      Also need nodejs, a Javascript runtime, because it comes with npm, node package manager. The compile tool used with Sass is called Node Sass and npm is required to install it.
+      <br>Also recommend using Git, which is version control.
+    </p>
+
+    <ol>
+      <li>Create / select directory</li>
+      <li>Create folder</li>
+      <li>Create a dist folder. It will contain all html, css, images, javascript, etc.</li>
+      <li>Create index.html file</li>
+      <li>Start Live Server by right clicking in html file and selecting to Open with Live Server</li>
+      <li>Create folder outside of dist called scss. This folder will contain sass files. </li>
+      <li>Within this folder, create a file call main.scss. Browsers don't read .scss files so to compile the files down to css install node.sass. It uses libSass which is the "C" version of the preprocessor.
+        <ol type="a">
+          <li>create a pkg.json file which is a manifest for project by
+            <ol type="i">
+              <li>Using either the standard Windows terminal or use the integrated terminal in VS Code (access by right clicking), enter  <code>npm init</code> and answer questions. This will create the package.json file which will appear in the file structure. Responses for this project are:
+                <ul>
+                  <li>package name: (modern_portfolio)</li>
+                  <li>version: (1.0.0)</li>
+                  <li>description: Responsive Portfolio Website</li>
+                  <li>entry point: (index.js)</li>
+                  <li>test command: hit enter</li>
+                  <li>git repository: hit enter</li>
+                  <li>keywords: hit enter</li>
+                  <li>author: "Enter your name"</li>
+                  <li>license: "MIT:</li>
+                  <li>HIT ENTER</li>
+                </ul>
+              </li>
+            </ol>
+          </li>
+          <li>Go back to terminal window and type <code>npm i node-sass</code>. This will create a node_modules folder. It is not deployed to server and you never really have to touch anything in folder and there is a lot because node-sass is a dependency and some of its dependencies have dependencies.</li>
+          <li>Now to set up node-sass to work using a npm script.
+            <ul>
+              <li>In the package.json file, locate the <code>"scripts" object.</code> It will say something like <code>"scripts": { "test": "echo \"Error: no test specified\" && exit 1"</code><br>
+              change to: <code>"scripts": { "sass": "echo \"Hello from sass"</code>. This could be changed to say anything desired.</li>
+              <li>Save file</li>
+              <li>Test was changed to sass, this is the script name. To run the script, go back to the terminal and type <code>npm run <name of script></code></li>
+              <li>What we really want here is to run node-sass in watch mode to watch the scss folder and to then output the compiled sass to dist/css which contains regular css. To do this change the scripts object to read: <code>"scripts": { "sass": "node-sass -w scss/ -o dist/css/ --recursive"</code>.The CSS folder under dist directory will automatically be created.</li>
+              <li>Save file</li>
+              <li>To run the script, go back to the terminal and type <code>npm run <name of script></code> code npm run sass</li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+      <li>Now go to the main.scss and write some sass.</li>
+      <li>To see that the css folder is automatically created, in the main.scss file type <code>$primary-color: #444;
+        body { background: $primary-color;}
+      </code>
+      <p>Adding the $ in front of primary-color indicated primary-color is a variable</p>
+      <p>In the terminal window a message will indicate its saving to the .css file and a css folder will be created. The sass was compiled to regular css and saved in the css folder in a file call main.css. DON'T TOUCH THE REGULAR CSS FILE!</p>
+    </li>
+    <li>Go to index.html and add a link to main.css </li>
+    <li>Create a git repository
+      <ul>
+        <li>Open a new terminal by hitting the plus sign. At this point, there are two terminal windows: One running sass and the other git.</li>
+        <li>type <code>touch .gitignore</code>. The touch command creates a new file</li>
+        <li>Locate the gitignore file in the file directory. </li>
+        <li>Type in the gitignore file, <code>node_modules</code></li>
+        <li>Save and close file</li>
+        <li>Initialize repository by typing in the terminal <code>git init</code>. This creates a hidden folder called git. All repository stuff goes in there.</li>
+        <li>To add all the project work completed so far, in the terminal window type <code>git add .
+        </code> to add all.</li>
+        <li>To make a local commit to the repository with a comment, type in the terminal window: git commit -m 'Initial workflow setup'. Where Initial workflow setup is the comment.</li>
+      </ul>
+    </li>
+    </ol>
+
+    <h2>Responsive Portfolio Website[2] - Homepage &amp; Sass</h2>
+    <ul>
+      <li>Add link to fontawesome in index.html</li>
+      <li>Create a js folder in the dist folder</li>
+      <li>Add main.js to js folder</li>
+      <li>With Sass you can nest. Instead of writing h1.lg-heading, shorthand is &.lg-heading.</li>
+      <li>REM is a multiplier of the html font size. So if font size in html is 16px, REM multiplier in this case is 6 times 16 which equals 96. If you look in the developer tools under the computed properties it will say 96px. If the html property designated the font-size as 10px, 6REM would equal 60 px.</li>
+
+      <ul>Mixins
+        <li>Mixins are like functions.</li>
+        <li>They are defined with <code>@mixin {}</code>like so <code>@mixin easeOut {
+            transition: all 0.5s ease-out;
+          }</code></li>
+        <li>They are executed with <code>@include <mixin name></code></li>
+      </ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+    <h2>Responsive Portfolio Website[3] - Homepage &amp; Sass</h2>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<style>
+@charset "UTF-8";
+@font-face{
+	font-family:'OffSMDL2';
+	src:url('/fonts/OffSMDL2.2.68.woff') format('woff')
+}
+.supHomepageIconsCarouselNext:before {
+    font-family: "OffSMDL2";
+    content: '';  /*> symbol*/
+}
+.supHomepageIconsCarouselPrev:before {
+    font-family: "OffSMDL2";
+    content: '';  /*< symbol*/
+}
+
+@media only screen and (max-width: 859px)
+.c-uhfh.c-sgl-stck .cat-logo-button-cont .c-cat-logo-button[aria-expanded='false']:after {
+    font-family: "MWF-MDL2";
+    content: "";
+}
+.supHomeAndLandingPageHeader.supModularHeaderDefaultHeader,.supHomeAndLandingPageHeader.supModularHeaderCTAHeader{margin-bottom:25px}}html[dir="rtl"] .supHomepageIconsCarouselNext{right:auto;left:-2.5%}html[dir="rtl"] .supHomepageIconsCarouselNext:before{font-family:"OffSMDL2";content:''}html[dir="rtl"] .supHomepageIconsCarouselPrev{right:-2.5%;left:auto}html[dir="rtl"] .supHomepageIconsCarouselPrev:before{font-family:"OffSMDL2";content:''}
+#supHomepageIconsContainer{padding-top:48px;padding-bottom:21px;margin:auto;width:90%}
+#supHomepageIconsCarousel{max-width:1510px;color:#000;margin:auto;position:relative}
+#supHomepageIconsCarousel .slick-slide{width:72px}
+#supHomepageIconsCarousel .slick-slide img{display:inline-block}
+#supHomepageIconsCarousel .slick-disabled{visibility:hidden}
+#supHomepageIconsCarousel .slick-track{margin:auto}
+.supHomepageIconsCarouselButton{position:absolute;top:0;bottom:0;height:100%;margin:auto;background:transparent;border:none;width:2.5%;visibility:hidden;cursor:pointer;font-size:20px}
+.supHomepageIconsCarouselButton.slick-arrow:not(.slick-disabled){visibility:visible}
+.supHomepageIconsCarouselPrev{left:-2.5%}.supHomepageIconsCarouselPrev:before{font-family:"OffSMDL2";content:''}
+.supHomepageIconsCarouselNext{right:-2.5%}.supHomepageIconsCarouselNext:before{font-family:"OffSMDL2";content:''}
+.supHomepageIcon{text-align:center;display:inline-block}.supHomepageIcon a{display:block}
+.supHomepageIcon span{font-family:'Segoe UI','Segoe UI Web','Segoe UI Symbol','wf_segoe-ui_normal','Helvetica Neue','BBAlpha Sans','S60 Sans',Arial,sans-serif;font-size:15px;line-height:20px}
+.supHomepageIcon span.macexcel,.supHomepageIcon span.maconenote,.supHomepageIcon span.macoutlook,.supHomepageIcon span.macpowerpoint,.supHomepageIcon span.macword{font-family:-apple-system,'Segoe UI','Segoe UI Web','Segoe UI Symbol','wf_segoe-ui_normal','Helvetica Neue','BBAlpha Sans','S60 Sans',Arial,sans-serif}
+.supHomepageIcons{visibility:hidden}.supHomepageIcons.slick-initialized{visibility:visible}
+
+</style>
