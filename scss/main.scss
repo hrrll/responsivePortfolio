@@ -1,0 +1,220 @@
+@import "config";
+@import "menu";
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include background;
+  background: $primary-color;
+  // $primary-color is a variable
+  // color: #fff; // Instead of using white, use text-color function
+  color: set-text-color($primary-color);
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+.tiny {
+  font-size: 0.4rem;
+  padding-top: 10rem;
+}
+
+// HEADINGS
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+
+  &.lg-heading {
+    font-size: 6rem;
+  }
+
+  &.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    background: rgba(lighten($primary-color, 2), 0.5);
+  }
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header {
+  position: fixed; // necessary for header to always stay at top
+  z-index: 2; // necessary for the hamburger is always on top
+  width: 100%;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+main {
+  padding: 4rem;
+  // CREATE a STICKY FOOTER SO THAT FOOTER STAYS AT THE BOTTOM
+  // height: 100%; // this height is relative to the content.
+
+  // Using this calc function, which must be used on the structure preceeding the footer, (in this case main), take the full height of the page 100vh and minus the height of the footer, 60px. Test by removing content.
+  min-height: calc(100vh - 60px);
+
+  .icons {
+    // only affects icons inside of main
+    margin-top: 1rem;
+
+    a {
+      // only affects icon links
+      padding: 0.4rem;
+
+      &:hover {
+        color: $secondary-color;
+        // transition: all 0.5s ease-out
+        @include easeOut();
+      }
+    }
+  }
+
+  &#home {
+    overflow: hidden; // eliminates scroll bars
+    h1 {
+      margin-top: 20vh;
+    }
+  }
+}
+
+// Align about.html using grid css
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas:
+  // So the visual representation of the final outcome of page there is the image and the bio is stretched across 2 columns. Then the jobs are displayed in one row with three columns
+
+  'bioimage bio bio'
+  'job1 job2 job3';
+  grid-template-columns: repeat(3, 1fr);
+
+
+  // It is not required that the following properties are nested within about-info. It is just for consistency.
+  // They work if not nested as well.
+  .bio-image {
+    grid-area: bioimage;
+    margin: auto;
+    border-radius: 50%;
+    border: $secondary-color 3px solid;
+  }
+
+  bio {
+    grid-area: bio;
+    font-size: 1.5rem;
+  }
+
+  .job-1 {
+    grid-area: job1
+  }
+
+  .job-2 {
+    grid-area: job2
+  }
+
+  .job-3 {
+    grid-area: job3
+  }
+
+  .job {
+    background: lighten($primary-color, 5);
+    padding: 0.5rem;
+    border-bottom: $secondary-color 5px solid;
+  }
+}
+
+// Work / Projects
+.projects {
+  display: grid;
+  grid-gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+
+
+  // Shrinks images to 100% of their container
+  img {
+    width: 100%;
+    border: 3px #fff solid;
+
+    &:hover {
+      opacity: 0.5;
+      border-color: $secondary-color;
+      @include easeOut;
+    }
+  }
+}
+
+// Contact Page
+// Could use grid to keep consistent with other technologies.
+// Throwing in flex to show a different technology
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+
+  div {
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    @include easeOut;
+
+    &:hover {
+      padding: 0.5rem 1.5rem;
+      background: $secondary-color;
+      color: set-text-color($secondary-color);
+
+      span {
+        color: set-text-color($secondary-color);
+      }
+    }
+  }
+}
+
+// Button Styles
+// Could also create a button.scss
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+
+  &:hover {
+    background:  $secondary-color;
+    color: set-text-color($secondary-color);
+  }
+}
+
+.btn-dark {
+  @extend .btn;
+  background: darken($primary-color, 50);
+  color: #fff;
+}
+
+.btn-light {
+  @extend .btn;
+  background: lighten($primary-color, 50);
+  color: #333;
+}
+
+#main-footer
+ {
+   text-align: center;
+   padding: 1rem;
+   background: darken($primary-color, 10);
+   color: set-text-color($primary-color);
+   height: 60px;
+ }
+
+@import "mobile";
